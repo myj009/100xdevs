@@ -1,0 +1,2 @@
+hi a.txt
+Appended text after 1 second.
