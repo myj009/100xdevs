@@ -1,0 +1,155 @@
+{
+	"info": {
+		"_postman_id": "ee381328-eff3-4e10-abab-9b6f3d58c96b",
+		"name": "udemy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "30162186"
+	},
+	"item": [
+		{
+			"name": "Create Admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3001/admin/signup"
+			},
+			"response": []
+		},
+		{
+			"name": "Create User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"user1\",\n    \"password\": \"password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3001/user/signup"
+			},
+			"response": []
+		},
+		{
+			"name": "Admin - Create Course",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "username",
+						"value": "admin",
+						"type": "text"
+					},
+					{
+						"key": "password",
+						"value": "password",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"title\": \"course title 2\", \"description\": \"course description 1\", \"price\": 200, \"imageLink\": \"https://linktoimage2.com\" }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3001/admin/courses"
+			},
+			"response": []
+		},
+		{
+			"name": "Admin - Get All Courses",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "username",
+						"value": "admin",
+						"type": "text"
+					},
+					{
+						"key": "password",
+						"value": "password",
+						"type": "text"
+					}
+				],
+				"url": "http://localhost:3001/admin/courses"
+			},
+			"response": []
+		},
+		{
+			"name": "User - Get All Courses",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "username",
+						"value": "user1",
+						"type": "text"
+					},
+					{
+						"key": "password",
+						"value": "password",
+						"type": "text"
+					}
+				],
+				"url": "http://localhost:3001/user/courses"
+			},
+			"response": []
+		},
+		{
+			"name": "User - Purchase Course",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "username",
+						"value": "user1",
+						"type": "text"
+					},
+					{
+						"key": "password",
+						"value": "password",
+						"type": "text"
+					}
+				],
+				"url": "http://localhost:3001/user/courses/6582ae23198b982801814bda"
+			},
+			"response": []
+		},
+		{
+			"name": "User - Get Purchased Courses",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "username",
+						"value": "user1",
+						"type": "text"
+					},
+					{
+						"key": "password",
+						"value": "password",
+						"type": "text"
+					}
+				],
+				"url": "http://localhost:3001/user/purchasedCourses"
+			},
+			"response": []
+		}
+	]
+}
