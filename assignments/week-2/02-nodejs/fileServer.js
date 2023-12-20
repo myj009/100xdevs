@@ -22,7 +22,6 @@ app.get("/file/:fileName", async (req, res) => {
   const fileName = req.params.fileName;
   fs.readFile(`./files/${fileName}`, "utf-8", (err, text) => {
     if (err) {
-      console.log(err);
       return res.status(404).send("File not found");
     }
     res.status(200).send(text);
@@ -34,7 +33,6 @@ app.get("/files", async (req, res) => {
 
   fs.readdir(fullPath, (err, files) => {
     if (err) {
-      console.log(err);
       return res.status(500).send("Error occurred");
     }
     res.status(200).json(files);

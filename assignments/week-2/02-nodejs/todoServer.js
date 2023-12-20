@@ -94,7 +94,6 @@ app.post("/todos", async (req, res) => {
     await fs.writeFile("todos.json", JSON.stringify(todos));
     return res.status(201).json({ id: newUuid });
   } catch (err) {
-    console.log(err);
     return res.status(500).send("Internal Server Error");
   }
 });
@@ -110,7 +109,6 @@ app.delete("/todos/:id", async (req, res) => {
     }
     todos = JSON.parse(data);
   } catch (err) {
-    console.log(err);
     return res.status(500).json({ error: err });
   }
 
@@ -126,7 +124,6 @@ app.delete("/todos/:id", async (req, res) => {
     await fs.writeFile("todos.json", JSON.stringify(newTodos));
     return res.status(200).send();
   } catch {
-    console.error("Error occured - ", err);
     return res
       .status(500)
       .json({ error: "Error occurred while deleting todo" });
@@ -140,10 +137,8 @@ app.put("/todos/:id", async (req, res) => {
   try {
     const data = await fs.readFile("todos.json", "utf-8");
     const todos = data === "" ? [] : JSON.parse(data);
-    console.log(todos);
 
     for (let i in todos) {
-      console.log(todos[i]);
       if (todos[i].id === todoId) {
         todos[i] = newTodo;
         await fs.writeFile("todos.json", JSON.stringify(todos));
@@ -153,11 +148,8 @@ app.put("/todos/:id", async (req, res) => {
 
     return res.status(404).send("Not found");
   } catch (err) {
-    console.log(err);
     res.status(500).send("Internal Server error");
   }
 });
-
-app.listen(3001);
 
 module.exports = app;
